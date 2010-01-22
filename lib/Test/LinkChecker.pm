@@ -30,14 +30,22 @@ our @EXPORT = qw(links_ok);
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
+    use strict;
+    use warnings;
 
     use Test::LinkChecker;
+    use WWW::Curl::Easy;
 
-    my $foo = Test::LinkChecker->new();
-    ...
+    my $curl = new WWW::Curl::Easy;
+
+    $curl->setopt(CURLOPT_HEADER, 0);
+    $curl->setopt(CURLOPT_FOLLOWLOCATION, 1);
+    $curl->setopt(CURLOPT_VERBOSE, 0);
+    $curl->setopt(CURLOPT_UNRESTRICTED_AUTH, 1);
+    $curl->setopt(CURLOPT_NOBODY, 1);
+    $curl->setopt(CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727)');
+
+    links_ok($curl, 'http://google.com');
 
 =head1 EXPORT
 

@@ -1,55 +1,79 @@
-Test-LinkChecker
+NAME
+       Test::LinkChecker - The great new Test::LinkChecker!
 
-The README is used to introduce the module and provide instructions on
-how to install the module, any machine dependencies it may have (for
-example C compilers and installed libraries) and any other information
-that should be provided before the module is installed.
+VERSION
+       Version 0.01
 
-A README file is required for CPAN modules since CPAN extracts the README
-file from a module distribution so that people browsing the archive
-can use it to get an idea of the module's uses. It is usually a good idea
-to provide version information here so that people can decide whether
-fixes for the module are worth downloading.
+SYNOPSIS
+           use strict;
+           use warnings;
 
+           use Test::LinkChecker;
+           use WWW::Curl::Easy;
 
-INSTALLATION
+           my $curl = new WWW::Curl::Easy;
 
-To install this module, run the following commands:
+           $curl->setopt(CURLOPT_HEADER, 0);
+           $curl->setopt(CURLOPT_FOLLOWLOCATION, 1);
+           $curl->setopt(CURLOPT_VERBOSE, 0);
+           $curl->setopt(CURLOPT_UNRESTRICTED_AUTH, 1);
+           $curl->setopt(CURLOPT_NOBODY, 1);
+           $curl->setopt(CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727)');
 
-	perl Makefile.PL
-	make
-	make test
-	make install
+           links_ok($curl, 'http://google.com');
 
-SUPPORT AND DOCUMENTATION
+EXPORT
+       A list of functions that can be exported.  You can delete this section
+       if you don’t export anything, such as for a purely object-oriented
+       module.
 
-After installing, you can find documentation for this module with the
-perldoc command.
+SUBROUTINES/METHODS
+   links_ok
+AUTHOR
+       z6x0a57, "<z6x0a57 at gmail.com>"
 
-    perldoc Test::LinkChecker
+BUGS
+       Please report any bugs or feature requests to "bug-test-linkchecker at
+       rt.cpan.org", or through the web interface at
+       http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Test-LinkChecker
+       <http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Test-LinkChecker>.  I
+       will be notified, and then you’ll automatically be notified of progress
+       on your bug as I make changes.
 
-You can also look for information at:
+SUPPORT
+       You can find documentation for this module with the perldoc command.
 
-    RT, CPAN's request tracker
-        http://rt.cpan.org/NoAuth/Bugs.html?Dist=Test-LinkChecker
+           perldoc Test::LinkChecker
 
-    AnnoCPAN, Annotated CPAN documentation
-        http://annocpan.org/dist/Test-LinkChecker
+       You can also look for information at:
 
-    CPAN Ratings
-        http://cpanratings.perl.org/d/Test-LinkChecker
+       ·   RT: CPAN’s request tracker
 
-    Search CPAN
-        http://search.cpan.org/dist/Test-LinkChecker/
+           http://rt.cpan.org/NoAuth/Bugs.html?Dist=Test-LinkChecker
+           <http://rt.cpan.org/NoAuth/Bugs.html?Dist=Test-LinkChecker>
 
+       ·   AnnoCPAN: Annotated CPAN documentation
 
+           http://annocpan.org/dist/Test-LinkChecker
+           <http://annocpan.org/dist/Test-LinkChecker>
+
+       ·   CPAN Ratings
+
+           http://cpanratings.perl.org/d/Test-LinkChecker
+           <http://cpanratings.perl.org/d/Test-LinkChecker>
+
+       ·   Search CPAN
+
+           http://search.cpan.org/dist/Test-LinkChecker/
+           <http://search.cpan.org/dist/Test-LinkChecker/>
+
+ACKNOWLEDGEMENTS
 LICENSE AND COPYRIGHT
+       Copyright 2010 z6x0a57.
 
-Copyright (C) 2010 z6x0a57
+       This program is free software; you can redistribute it and/or modify it
+       under the terms of either: the GNU General Public License as published
+       by the Free Software Foundation; or the Artistic License.
 
-This program is free software; you can redistribute it and/or modify it
-under the terms of either: the GNU General Public License as published
-by the Free Software Foundation; or the Artistic License.
-
-See http://dev.perl.org/licenses/ for more information.
+       See http://dev.perl.org/licenses/ for more information.
 
