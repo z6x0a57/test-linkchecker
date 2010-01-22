@@ -18,7 +18,7 @@ SYNOPSIS
            $curl->setopt(CURLOPT_VERBOSE, 0);
            $curl->setopt(CURLOPT_UNRESTRICTED_AUTH, 1);
            $curl->setopt(CURLOPT_NOBODY, 1);
-           $curl->setopt(CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727)');
+           $curl->setopt(CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322)');
 
            links_ok($curl, 'http://google.com');
 
@@ -35,8 +35,7 @@ AUTHOR
 BUGS
        Please report any bugs or feature requests to "bug-test-linkchecker at
        rt.cpan.org", or through the web interface at
-       http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Test-LinkChecker
-       <http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Test-LinkChecker>.  I
+       http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Test-LinkChecker.
        will be notified, and then you’ll automatically be notified of progress
        on your bug as I make changes.
 
@@ -50,22 +49,18 @@ SUPPORT
        ·   RT: CPAN’s request tracker
 
            http://rt.cpan.org/NoAuth/Bugs.html?Dist=Test-LinkChecker
-           <http://rt.cpan.org/NoAuth/Bugs.html?Dist=Test-LinkChecker>
 
        ·   AnnoCPAN: Annotated CPAN documentation
 
            http://annocpan.org/dist/Test-LinkChecker
-           <http://annocpan.org/dist/Test-LinkChecker>
 
        ·   CPAN Ratings
 
            http://cpanratings.perl.org/d/Test-LinkChecker
-           <http://cpanratings.perl.org/d/Test-LinkChecker>
 
        ·   Search CPAN
 
            http://search.cpan.org/dist/Test-LinkChecker/
-           <http://search.cpan.org/dist/Test-LinkChecker/>
 
 ACKNOWLEDGEMENTS
 LICENSE AND COPYRIGHT
