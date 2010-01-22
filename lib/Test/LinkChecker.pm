@@ -2,6 +2,9 @@ package Test::LinkChecker;
 
 use warnings;
 use strict;
+use WWW::Mechanize;
+use Test::More;
+use Test::Curl;
 
 =head1 NAME
 
@@ -15,6 +18,15 @@ Version 0.01
 
 our $VERSION = '0.01';
 
+require Exporter;
+
+our @ISA = qw(Exporter);
+
+our %EXPORT_TAGS = ( 'all' => [ qw(links_ok) ] );
+
+our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+our @EXPORT = qw(links_ok);
 
 =head1 SYNOPSIS
 
@@ -34,18 +46,26 @@ if you don't export anything, such as for a purely object-oriented module.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 function1
+=head2 links_ok
 
 =cut
 
-sub function1 {
-}
+sub links_ok {
+    my ($curl, $url) = @_;
 
-=head2 function2
+    my $mech = WWW::Mechanize->new();
 
-=cut
+    $mech->get($url);
 
-sub function2 {
+    my @links = $mech->links();
+
+
+    foreach my $link (@links) {
+        my $url = $link->url_abs();
+        curl_200_ok($curl, $url);
+    }
+
+    done_testing();
 }
 
 =head1 AUTHOR
