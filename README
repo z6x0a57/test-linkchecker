@@ -1,5 +1,5 @@
 NAME
-       Test::LinkChecker - The great new Test::LinkChecker!
+       Test::LinkChecker - Check webpage for broken links.
 
 VERSION
        Version 0.01
@@ -22,20 +22,16 @@ SYNOPSIS
 
            links_ok($curl, 'http://google.com');
 
-EXPORT
-       A list of functions that can be exported.  You can delete this section
-       if you don’t export anything, such as for a purely object-oriented
-       module.
-
 SUBROUTINES/METHODS
    links_ok
+
 AUTHOR
        z6x0a57, "<z6x0a57 at gmail.com>"
 
 BUGS
        Please report any bugs or feature requests to "bug-test-linkchecker at
        rt.cpan.org", or through the web interface at
-       http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Test-LinkChecker.
+       http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Test-LinkChecker
        will be notified, and then you’ll automatically be notified of progress
        on your bug as I make changes.
 
@@ -62,7 +58,6 @@ SUPPORT
 
            http://search.cpan.org/dist/Test-LinkChecker/
 
-ACKNOWLEDGEMENTS
 LICENSE AND COPYRIGHT
        Copyright 2010 z6x0a57.
 
