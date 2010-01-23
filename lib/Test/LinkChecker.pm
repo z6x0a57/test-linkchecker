@@ -8,7 +8,7 @@ use Test::Curl;
 
 =head1 NAME
 
-Test::LinkChecker - The great new Test::LinkChecker!
+Test::LinkChecker - Check webpage for broken links.
 
 =head1 VERSION
 
@@ -43,14 +43,9 @@ our @EXPORT = qw(links_ok);
     $curl->setopt(CURLOPT_VERBOSE, 0);
     $curl->setopt(CURLOPT_UNRESTRICTED_AUTH, 1);
     $curl->setopt(CURLOPT_NOBODY, 1);
-    $curl->setopt(CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727)');
+    $curl->setopt(CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322)');
 
     links_ok($curl, 'http://google.com');
-
-=head1 EXPORT
-
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
 
 =head1 SUBROUTINES/METHODS
 
