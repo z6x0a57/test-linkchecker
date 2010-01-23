@@ -22,11 +22,11 @@ require Exporter;
 
 our @ISA = qw(Exporter);
 
-our %EXPORT_TAGS = ( 'all' => [ qw(links_ok) ] );
+our %EXPORT_TAGS = ( 'all' => [ qw(links_ok images_ok) ] );
 
 our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
-our @EXPORT = qw(links_ok);
+our @EXPORT = qw(links_ok images_ok);
 
 =head1 SYNOPSIS
 
@@ -34,6 +34,7 @@ our @EXPORT = qw(links_ok);
     use warnings;
 
     use Test::LinkChecker;
+    use Test::More;
     use WWW::Curl::Easy;
 
     my $curl = new WWW::Curl::Easy;
@@ -45,11 +46,23 @@ our @EXPORT = qw(links_ok);
     $curl->setopt(CURLOPT_NOBODY, 1);
     $curl->setopt(CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322)');
 
-    links_ok($curl, 'http://google.com');
+    my $url = 'http://google.com';
+
+    links_ok($curl, $url);
+    images_ok($curl, $url);
+
+    done_testing();
 
 =head1 SUBROUTINES/METHODS
 
-=head2 links_ok
+=head2 links_ok ($curl, $url)
+
+Check list of the links found in the webpage.
+
+
+=head2 images_ok ($curl, $url)
+
+Check list of the images found in the webpage.
 
 =cut
 
@@ -67,9 +80,24 @@ sub links_ok {
         my $url = $link->url_abs();
         curl_200_ok($curl, $url);
     }
-
-    done_testing();
 }
+
+sub images_ok {
+    my ($curl, $url) = @_;
+
+    my $mech = WWW::Mechanize->new();
+
+    $mech->get($url);
+
+    my @links = $mech->images();
+
+
+    foreach my $link (@links) {
+        my $url = $link->url_abs();
+        curl_200_ok($curl, $url);
+    }
+}
+
 
 =head1 AUTHOR
 

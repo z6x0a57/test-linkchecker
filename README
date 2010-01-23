@@ -9,6 +9,7 @@ SYNOPSIS
            use warnings;
 
            use Test::LinkChecker;
+           use Test::More;
            use WWW::Curl::Easy;
 
            my $curl = new WWW::Curl::Easy;
@@ -20,10 +21,19 @@ SYNOPSIS
            $curl->setopt(CURLOPT_NOBODY, 1);
            $curl->setopt(CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322)');
 
-           links_ok($curl, 'http://google.com');
+           my $url = 'http://google.com';
+
+           links_ok($curl, $url);
+           images_ok($curl, $url);
+
+           done_testing();
 
 SUBROUTINES/METHODS
-   links_ok
+   links_ok ($curl, $url)
+       Check list of the links found in the webpage.
+
+   images_ok ($curl, $url)
+       Check list of the images found in the webpage.
 
 AUTHOR
        z6x0a57, "<z6x0a57 at gmail.com>"
